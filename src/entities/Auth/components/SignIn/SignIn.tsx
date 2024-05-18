@@ -1,10 +1,51 @@
 import React from 'react';
+import {FormSchemaSigIn, signInSchema} from "../../schema";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {signInField} from "../model";
+import {InputForAuth} from "../InputForAuth";
 
 export const SignIn = () => {
-    return (
-        <div>
 
-        </div>
+    const {
+        register,
+        handleSubmit,
+        reset,
+        setFocus,
+        trigger,
+        formState: { isDirty, isSubmitting, errors },}
+        = useForm<FormSchemaSigIn>({
+        resolver: zodResolver(signInSchema),
+        defaultValues: {
+            email: '',
+            password: '',
+        }
+    });
+
+    const registerSubmit: SubmitHandler<FormSchemaSigIn> = (data) => {
+        alert('Вы вошли')
+    };
+
+    return (
+        <form
+            onSubmit={handleSubmit(registerSubmit)}
+        >
+            {
+                signInField.map((item, index) => {
+                    return (
+                        <InputForAuth
+                            placeholder={item.placeholder}
+                            register={register(item.name as "email" | "password")}
+                            typeInputForSignUp={item.type}
+                            testId={`test_login_${item.name}`}
+                            errorTestId={`test_error_login_${item.name}`}
+                            error={errors[item.name as "email" | "password"]}
+                        />
+                    )
+                })
+            }
+            <button>Войти</button>
+        </form>
     );
 };
 

@@ -3,13 +3,15 @@ import React, {Component, useId} from 'react';
 interface InputProps {
     label?: string;
     error?: string;
-    id: number;
+    placeholder?: string;
+    id?: number;
     component?: React.ComponentType<any>;
     ref?: React.Ref<HTMLElement | null>;
+    value?: string;
 }
 
 export const Input = (
-    { label = '', error = '', id, ref,  component, ...props }: InputProps,
+    { label = '', error = '', id, ref,  component, placeholder = '', value = '',  ...props }: InputProps,
 ) => {
 
     const uniqueId = useId() ?? id;
