@@ -16,7 +16,7 @@ interface IRegisterHook {
 
 export interface IInputForAuth extends IForTest{
     placeholder?: string,
-    typeInputForSignUp: TypeInputAuth,
+    typeInputForSignUp?: TypeInputAuth,
     error?: FieldError,
     register?: IRegisterHook,
 }

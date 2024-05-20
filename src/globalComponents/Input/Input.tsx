@@ -11,7 +11,7 @@ type InputProps<
 } & React.ComponentProps<Component> & IInputForAuth;
 
 export const Input = (
-    { label = '', error, id, component, err_message = '',  ...props }: InputProps,
+    { label = '', error, id, component, err_message = '', register,  ...props }: InputProps,
 ) => {
 
     const uniqueId = useId() ?? id;
@@ -27,6 +27,7 @@ export const Input = (
                 )
             }
             <Component
+                {...register}
                 {...props}
                 id={uniqueId}
             />
