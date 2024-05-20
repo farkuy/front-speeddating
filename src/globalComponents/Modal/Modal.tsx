@@ -1,5 +1,4 @@
 import React, {ReactNode} from 'react';
-// @ts-ignore
 import styles from "./style.module.css"
 interface ModalProps {
     label?: string;

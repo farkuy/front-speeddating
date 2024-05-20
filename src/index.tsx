@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {router} from "./imports";
 import {RouterProvider} from "react-router-dom";
-
+import "./index.module.css"
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
