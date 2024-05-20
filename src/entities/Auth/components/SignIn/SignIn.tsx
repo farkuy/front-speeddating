@@ -3,7 +3,7 @@ import {FormSchemaSigIn, signInSchema} from "../../schema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {signInField} from "../model";
-import {InputForAuth} from "../InputForAuth";
+import {Input} from "../../../../globalComponents/Input/Input";
 
 export const SignIn = () => {
 
@@ -33,7 +33,7 @@ export const SignIn = () => {
             {
                 signInField.map((item, index) => {
                     return (
-                        <InputForAuth
+                        <Input
                             placeholder={item.placeholder}
                             register={register(item.name as "email" | "password")}
                             typeInputForSignUp={item.type}

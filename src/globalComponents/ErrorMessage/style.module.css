@@ -1,0 +1,11 @@
+.error_message {
+  color: red;
+  font-size: 14px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.module.css.map */
