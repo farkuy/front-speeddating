@@ -1,11 +1,3 @@
-.error_message {
-  color: red;
-  font-size: 14px;
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-items: center;
-  align-items: center;
+.input_style {
+    @apply w-full font-semibold p-[12px] bg-[#F8F1FF] rounded-md h-[40px]
 }
-
-/*# sourceMappingURL=style.module.css.map */
