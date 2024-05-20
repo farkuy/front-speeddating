@@ -2,7 +2,6 @@ import React, {useMemo, useState} from 'react';
 import {Modal} from "../../globalComponents/Modal/Modal";
 import {RegOrSig} from "../modal";
 import {SignIn, SignUp} from "./index";
-import {Link} from "react-router-dom";
 
 export const AuthModal = () => {
 
