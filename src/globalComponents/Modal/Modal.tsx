@@ -6,13 +6,12 @@ interface ModalProps {
     children?: ReactNode;
 }
 
-export const Modal = (
-    {label = "", id, children}: ModalProps
-) => {
+export const Modal = (props: ModalProps) => {
+
+    const { label = "", id, children } = props;
+
     return (
-        <div
-            className={styles.modal}
-        >
+        <div className={styles.modal}>
             { label && (<div className={styles.title}>{ label }</div>)}
             { children }
         </div>

@@ -29,7 +29,6 @@ export const SignIn = () => {
     return (
         <form
             onSubmit={handleSubmit(registerSubmit)}
-            style={{width: '400px', height: '250px'}}
         >
             {
                 signInField.map((item, index) => {

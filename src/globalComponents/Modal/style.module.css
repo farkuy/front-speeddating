@@ -1,3 +1,7 @@
-.error_message {
-    @apply text-red-400
+.modal {
+    @apply flex justify-center align-middle flex-col bg-amber-300 rounded-xl p-[20px]
+}
+
+.title {
+    @apply text-center text-[30px] font-semibold mb-[25px]
 }
