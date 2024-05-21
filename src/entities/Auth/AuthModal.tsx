@@ -23,6 +23,19 @@ export const AuthModal = () => {
                     ? <SignIn/>
                     : <SignUp/>
             }
+            {
+                <button
+                    onClick={() => {
+                        if( pageRegOrSig === RegOrSig.signIn) {
+                            setPageRegOrSig(RegOrSig.signUp)
+                        } else {
+                            setPageRegOrSig(RegOrSig.signIn)
+                        }
+                    }}
+                >
+                    Регистрашка/Входяшка
+                </button>
+            }
         </Modal>
     );
 };

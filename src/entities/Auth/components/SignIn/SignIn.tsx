@@ -4,7 +4,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {signInField} from "../model";
 import {Input} from "../../../../globalComponents/Input/Input";
-import {login, registration} from "../../../../http/userApi";
+import {login} from "../../../../http/userApi";
 
 export const SignIn = () => {
 
@@ -29,8 +29,8 @@ export const SignIn = () => {
     }
 
     return (
-        <div
-            ///onSubmit={handleSubmit(registerSubmit)}
+        <form
+            onSubmit={handleSubmit(registerSubmit)}
         >
             {
                 signInField.map((item, index) => {
@@ -42,14 +42,13 @@ export const SignIn = () => {
                             testId={`test_login_${item.name}`}
                             errorTestId={`test_error_login_${item.name}`}
                             error={errors[item.name as "email" | "password"]}
+                            key={item.name}
                         />
                     )
                 })
             }
-            <button
-                onClick={async () => await signIn()}
-            >Войти</button>
-        </div>
+            <button>Войти</button>
+        </form>
     );
 };
 
