@@ -4,6 +4,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {signInField} from "../model";
 import {Input} from "../../../../globalComponents/Input/Input";
+import {login, registration} from "../../../../http/userApi";
 
 export const SignIn = () => {
 
@@ -22,13 +23,18 @@ export const SignIn = () => {
         }
     });
 
+    const signIn = async () => {
+        const response = await login('dsdas221', '123');
+        console.log(response)
+    }
+
     const registerSubmit: SubmitHandler<FormSchemaSigIn> = (data) => {
         alert('Вы вошли')
     };
 
     return (
-        <form
-            onSubmit={handleSubmit(registerSubmit)}
+        <div
+            ///onSubmit={handleSubmit(registerSubmit)}
         >
             {
                 signInField.map((item, index) => {
@@ -44,8 +50,10 @@ export const SignIn = () => {
                     )
                 })
             }
-            <button>Войти</button>
-        </form>
+            <button
+                onClick={async () => await signIn()}
+            >Войти</button>
+        </div>
     );
 };
 
