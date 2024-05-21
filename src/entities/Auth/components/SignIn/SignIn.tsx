@@ -22,9 +22,10 @@ export const SignIn = () => {
         }
     });
 
-    const registerSubmit: SubmitHandler<FormSchemaSigIn> = (data) => {
-        alert('Вы вошли')
-    };
+    const registerSubmit: SubmitHandler<FormSchemaSigIn> = async (data) => {
+        const response = await login(data.email, data.password);
+        console.log(response)
+    }
 
     return (
         <form
