@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx"
-class UserStore {
+import {checkAuth, login, registration} from "../api/userApi";
+export default class UserStore {
     private _isAuth: boolean;
     private _user: {};
     constructor() {
@@ -8,8 +9,40 @@ class UserStore {
         makeAutoObservable(this)
     }
 
-    setIsAuth() {
-        this._isAuth = false
+    async login (email: string, password: string) {
+        try {
+            const response = await login(email, password);
+            this.setIsAuth(true)
+            console.log(response)
+        } catch (error) {
+            alert('Не верный логин или пароль')
+        }
+    }
+
+    async registration (email: string, password: string) {
+        try {
+            const response = await registration(email, password);
+            this.setIsAuth(true)
+            console.log(response)
+        } catch (error) {
+            console.log(error)
+            alert('Данный имейл уже занят')
+        }
+    }
+
+    async checkAuth(jwt: string) {
+        try {
+            const response = await checkAuth(jwt);
+            this.setIsAuth(true)
+            this.setUser(response)
+        } catch (error) {
+            console.log(error);
+            alert('Чет не так')
+        }
+    }
+
+    setIsAuth(isAuth: boolean) {
+        this._isAuth = isAuth
     }
 
     setUser(user: {}) {
@@ -25,4 +58,3 @@ class UserStore {
     }
 }
 
-export default new UserStore();

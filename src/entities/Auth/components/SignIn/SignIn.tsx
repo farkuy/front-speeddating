@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {FormSchemaSigIn, signInSchema} from "../../schema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {signInField} from "../model";
 import {Input} from "../../../../globalComponents/Input/Input";
-import {login} from "../../../../http/userApi";
+import {login} from "../../../../api/userApi";
+import {observer} from "mobx-react-lite";
+import {Context} from "../../../../index";
 
-export const SignIn = () => {
+export const SignIn = observer(() => {
+
+    const { user } = useContext(Context)
 
     const {
         register,
@@ -24,8 +28,7 @@ export const SignIn = () => {
     });
 
     const registerSubmit: SubmitHandler<FormSchemaSigIn> = async (data) => {
-        const response = await login(data.email, data.password);
-        console.log(response)
+        await user.login(data.email, data.password)
     }
 
     return (
@@ -50,5 +53,5 @@ export const SignIn = () => {
             <button>Войти</button>
         </form>
     );
-};
+});
 

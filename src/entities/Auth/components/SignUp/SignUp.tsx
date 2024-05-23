@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import {FormSchemaSigUp, signUpSchema} from "../../schema";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {registration} from "../../../../http/userApi";
 import {signUpField} from "../model";
 import {Input} from "../../../../globalComponents/Input/Input";
+import {observer} from "mobx-react-lite";
+import {Context} from "../../../../index";
 
-export const SignUp = () => {
+export const SignUp = observer(() => {
+
+    const { user } = useContext(Context)
+
     const {
         register,
         handleSubmit,
@@ -24,8 +28,7 @@ export const SignUp = () => {
     });
 
     const registerSubmit: SubmitHandler<FormSchemaSigUp> = async (data) => {
-        const response = await registration(data.email, data.password);
-        console.log(response)
+        await user.registration(data.email, data.password)
     }
 
     return (
@@ -50,5 +53,5 @@ export const SignUp = () => {
             <button>Регистрация</button>
         </form>
     );
-}
+})
 
