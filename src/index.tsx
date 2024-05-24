@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom/client';
 import {router} from "./imports";
 import {RouterProvider} from "react-router-dom";
 import "./index.module.css"
-import UserStore from "./store/UserStore";
+import UserStore from "./store/userStore/UserStore";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-
 interface IUser {
     user: UserStore
 }

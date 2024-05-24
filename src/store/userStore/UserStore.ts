@@ -1,11 +1,13 @@
-import { makeAutoObservable } from "mobx"
-import {checkAuth, login, registration} from "../api/userApi";
+import {makeAutoObservable} from "mobx"
+import {checkAuth, login, registration} from "../../api/userApi";
+import {IUser} from "./schema";
+
 export default class UserStore {
     private _isAuth: boolean;
-    private _user: {};
+    private _user?: IUser;
     constructor() {
         this._isAuth = false
-        this._user = {}
+        this._user = undefined
         makeAutoObservable(this)
     }
 
@@ -33,6 +35,7 @@ export default class UserStore {
     async checkAuth(jwt: string) {
         try {
             const response = await checkAuth(jwt);
+            console.log(response)
             this.setIsAuth(true)
             this.setUser(response)
         } catch (error) {
@@ -45,7 +48,7 @@ export default class UserStore {
         this._isAuth = isAuth
     }
 
-    setUser(user: {}) {
+    setUser(user:  IUser) {
         this._user = user
     }
 

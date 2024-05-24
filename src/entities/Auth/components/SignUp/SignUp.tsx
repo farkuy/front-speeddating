@@ -14,10 +14,7 @@ export const SignUp = observer(() => {
     const {
         register,
         handleSubmit,
-        reset,
-        setFocus,
-        trigger,
-        formState: { isDirty, isSubmitting, errors },}
+        formState: { errors },}
         = useForm<FormSchemaSigUp>({
         resolver: zodResolver(signUpSchema),
         defaultValues: {

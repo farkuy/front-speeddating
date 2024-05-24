@@ -4,7 +4,6 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {signInField} from "../model";
 import {Input} from "../../../../globalComponents/Input/Input";
-import {login} from "../../../../api/userApi";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../../../index";
 
@@ -15,10 +14,7 @@ export const SignIn = observer(() => {
     const {
         register,
         handleSubmit,
-        reset,
-        setFocus,
-        trigger,
-        formState: { isDirty, isSubmitting, errors },}
+        formState: { errors },}
         = useForm<FormSchemaSigIn>({
         resolver: zodResolver(signInSchema),
         defaultValues: {

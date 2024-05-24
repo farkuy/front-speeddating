@@ -1,12 +1,13 @@
 import {$authHost, $host} from "./index";
 import {jwtDecode} from "jwt-decode";
+import {IUser} from "../store/userStore/schema";
 
 export const login = async (email: string, password: string) => {
     const { data } = await $host.post('auth/login', {
         email, password
     });
     localStorage.setItem('token', data.token)
-    return jwtDecode(data.token);
+    return jwtDecode<IUser>(data.token);
 }
 
 export const registration = async (email: string, password: string) => {
@@ -14,7 +15,7 @@ export const registration = async (email: string, password: string) => {
         email, password
     });
     localStorage.setItem('token', data.token)
-    return jwtDecode(data.token);
+    return jwtDecode<IUser>(data.token);
 }
 
 export const checkAuth = async (jwt: string) => {
@@ -24,5 +25,5 @@ export const checkAuth = async (jwt: string) => {
         }
     });
     localStorage.setItem('token', data.token);
-    return jwtDecode(data.token);
+    return jwtDecode<IUser>(data.token);
 }

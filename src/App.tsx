@@ -1,22 +1,17 @@
-import React, {useContext, useEffect, useMemo} from 'react';
+import React, {useContext} from 'react';
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
+import {useCheckAuth} from "./hooks/useCheckAuth";
 
-export const App =  observer(() => {
+export const App = observer(() => {
 
     const { user } = useContext(Context)
-
-    useMemo(async () => {
-        const token = localStorage.getItem('token')
-        if (token) {
-            await user.checkAuth(token)
-            console.log(user.user, user.isAuth)
-        }
-    }, [])
+    const checkAuth = useCheckAuth();
 
     return (
     <div className="App">
-      page
+        {user.user && <div>{user.user.email}</div>}
+        page
     </div>
   );
 })
