@@ -1,7 +1,7 @@
 import React from 'react';
 import {FieldError} from "react-hook-form";
-import {IForTest} from "../../models";
 import styles from "./error.module.css";
+import {IForTest} from "../../models/models";
 interface ErrorMessageProps extends IForTest{
     error?: FieldError,
     err_message?: string, // Дубликать error, однако это позволяет больше не писать несколько инпутов

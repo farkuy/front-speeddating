@@ -1,7 +1,8 @@
 import React, {useMemo, useState} from 'react';
 import {Modal} from "../../globalComponents/Modal/Modal";
 import {RegOrSig} from "../modal";
-import {SignIn, SignUp} from "./index";
+import {SignIn} from "./components/SignIn";
+import {SignUp} from "./components/SignUp";
 
 export const AuthModal = () => {
 
@@ -9,7 +10,7 @@ export const AuthModal = () => {
 
     const label = useMemo(() => {
         if (pageRegOrSig === RegOrSig.signIn) {
-            return "Вход в учебную запись"
+            return "Вход в учетную запись"
         }
         return "Регистрация профиля"
     }, [pageRegOrSig])
@@ -33,7 +34,9 @@ export const AuthModal = () => {
                         }
                     }}
                 >
-                    Регистрашка/Входяшка
+                    {
+                        pageRegOrSig === RegOrSig.signIn ? "Зарегестрироваться" : "Войти"
+                    }
                 </button>
             }
         </Modal>

@@ -3,9 +3,9 @@ import {FormSchemaSigIn, signInSchema} from "../../schema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {signInField} from "../model";
-import {Input} from "../../../../globalComponents/Input/Input";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../../../index";
+import {Input} from "../../../../globalComponents/Input/Input";
 
 export const SignIn = observer(() => {
 

@@ -1,9 +1,9 @@
 import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
-import {router} from "./imports";
 import {RouterProvider} from "react-router-dom";
 import "./index.module.css"
 import UserStore from "./store/userStore/UserStore";
+import {router} from "./router/roter";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -1,6 +1,6 @@
 import {ChangeHandler, FieldError} from "react-hook-form";
 import React from "react";
-import {IForTest} from "../../../models";
+import {IForTest} from "../../../models/models";
 
 export enum TypeInputAuth {
     text = 'text',

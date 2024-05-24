@@ -15,8 +15,10 @@ export default class UserStore {
         try {
             const response = await login(email, password);
             this.setIsAuth(true)
+            this.setUser(response)
             console.log(response)
         } catch (error) {
+            console.log(error)
             alert('Не верный логин или пароль')
         }
     }
@@ -25,6 +27,7 @@ export default class UserStore {
         try {
             const response = await registration(email, password);
             this.setIsAuth(true)
+            this.setUser(response)
             console.log(response)
         } catch (error) {
             console.log(error)

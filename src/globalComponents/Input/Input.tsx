@@ -1,7 +1,7 @@
 import React, {Component, useId} from 'react';
 import {IInputForAuth} from "../../entities/Auth/components/model";
-import {ErrorMessage} from "../ErrorMessage";
 import style from "./style.module.css"
+import {ErrorMessage} from "../ErrorMessage/ErrorMessage";
 
 type InputProps<
     Component extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = 'input'
