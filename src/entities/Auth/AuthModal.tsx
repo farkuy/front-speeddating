@@ -1,19 +1,18 @@
-import React, {useMemo, useState} from 'react';
+import React from 'react';
 import {Modal} from "../../globalComponents/Modal/Modal";
 import {RegOrSig} from "../modal";
 import {SignIn} from "./components/SignIn";
 import {SignUp} from "./components/SignUp";
+import {useAuthPage} from "../../router/pages/Auth/hooks/useAuthPage";
 
 export const AuthModal = () => {
 
-    const [pageRegOrSig, setPageRegOrSig] = useState<RegOrSig>(RegOrSig.signIn)
-
-    const label = useMemo(() => {
-        if (pageRegOrSig === RegOrSig.signIn) {
-            return "Вход в учетную запись"
-        }
-        return "Регистрация профиля"
-    }, [pageRegOrSig])
+    const {
+        label,
+        pageRegOrSig,
+        authHandler,
+        btnAuthName
+    } = useAuthPage()
 
     return (
         <Modal
@@ -24,21 +23,11 @@ export const AuthModal = () => {
                     ? <SignIn/>
                     : <SignUp/>
             }
-            {
-                <button
-                    onClick={() => {
-                        if( pageRegOrSig === RegOrSig.signIn) {
-                            setPageRegOrSig(RegOrSig.signUp)
-                        } else {
-                            setPageRegOrSig(RegOrSig.signIn)
-                        }
-                    }}
-                >
-                    {
-                        pageRegOrSig === RegOrSig.signIn ? "Зарегестрироваться" : "Войти"
-                    }
-                </button>
-            }
+            <button
+                onClick={() => authHandler()}
+            >
+                {btnAuthName}
+            </button>
         </Modal>
     );
 };
