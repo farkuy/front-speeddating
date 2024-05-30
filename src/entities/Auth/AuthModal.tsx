@@ -1,9 +1,8 @@
 import React from 'react';
 import {Modal} from "../../globalComponents/Modal/Modal";
 import {RegOrSig} from "../modal";
-import {SignIn} from "./components/SignIn";
-import {SignUp} from "./components/SignUp";
-import {useAuthPage} from "../../router/pages/Auth/hooks/useAuthPage";
+import { SignIn, SignUp} from "./index"
+import {useSelectAuthForm} from "../../router/pages/Auth/hooks/useSelectAuthForm";
 
 export const AuthModal = () => {
 
@@ -12,7 +11,7 @@ export const AuthModal = () => {
         pageRegOrSig,
         authHandler,
         btnAuthName
-    } = useAuthPage()
+    } = useSelectAuthForm()
 
     return (
         <Modal
@@ -24,7 +23,7 @@ export const AuthModal = () => {
                     : <SignUp/>
             }
             <button
-                onClick={() => authHandler()}
+                onClick={authHandler}
             >
                 {btnAuthName}
             </button>

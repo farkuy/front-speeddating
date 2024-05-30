@@ -6,7 +6,7 @@ export const login = async (email: string, password: string) => {
     const { data } = await $host.post('auth/login', {
         email, password
     });
-    localStorage.setItem('token', data.token)
+    localStorage.setItem('token', data.token);
     return jwtDecode<IUser>(data.token);
 }
 
@@ -26,4 +26,9 @@ export const checkAuth = async (jwt: string) => {
     });
     localStorage.setItem('token', data.token);
     return jwtDecode<IUser>(data.token);
+}
+
+export const getUserProfile = async (idUserProfile: number) => {
+    const { data } = await $authHost.get(`http://localhost:5000/user-profile/21`);
+    return data
 }

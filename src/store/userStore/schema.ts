@@ -1,3 +1,15 @@
+export enum ISex {
+    MALE  = "Мужской",
+    FEMALE  = "Женский"
+}
+
+export interface IUserProfile {
+    sex: ISex;
+    age: number;
+    hobbies: string [];
+    about_yourself: string;
+}
+
 export interface IUser {
     id: number,
     email: string,
@@ -9,5 +21,7 @@ export interface IUser {
         value: string,
         description: string,
     } [],
-
+    user_profile_id: number,
+    user_profile: IUserProfile,
+    user_preferred_id: number,
 }

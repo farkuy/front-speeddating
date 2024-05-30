@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx"
-import {checkAuth, login, registration} from "../../api/userApi";
+import {checkAuth, getUserProfile, login, registration} from "../../api/userApi";
 import {IUser} from "./schema";
 
 export default class UserStore {
@@ -41,6 +41,20 @@ export default class UserStore {
             console.log(response)
             this.setIsAuth(true)
             this.setUser(response)
+        } catch (error) {
+            console.log(error);
+            alert('Чет не так')
+        }
+    }
+
+    async getUserProfile() {
+        try {
+            if (this._user?.user_profile_id) {
+                const response = await getUserProfile(this._user?.user_profile_id);
+                console.log(121, response)
+            } else {
+                throw new Error("Профиль не найден")
+            }
         } catch (error) {
             console.log(error);
             alert('Чет не так')

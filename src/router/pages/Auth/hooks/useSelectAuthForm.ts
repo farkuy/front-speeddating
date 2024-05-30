@@ -1,7 +1,7 @@
 import {useMemo, useState} from 'react';
 import {RegOrSig} from "../../../../entities/modal";
 
-export const useAuthPage = () => {
+export const useSelectAuthForm = () => {
 
     const [pageRegOrSig, setPageRegOrSig] = useState<RegOrSig>(RegOrSig.signIn);
     const [btnAuthName, setBtnName] = useState('Зарегестрироваться')
