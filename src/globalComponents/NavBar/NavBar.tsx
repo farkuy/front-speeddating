@@ -11,6 +11,7 @@ export const NavBar = () => {
                 pagesPath.map(item => (
                     <Link
                         to={item.path}
+                        key={item.path}
                     >
                         {item.name}
                     </Link>

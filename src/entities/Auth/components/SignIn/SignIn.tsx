@@ -28,6 +28,7 @@ export const SignIn = observer(() => {
     const registerSubmit: SubmitHandler<FormSchemaSigIn> = async (data) => {
         await user.login(data.email, data.password);
         console.log(user.user, user.user?.user_profile)
+
         if (!user.user?.user_profile) {
             console.log(user.user, user.user?.user_profile)
             history("/filling_profile")
@@ -44,7 +45,7 @@ export const SignIn = observer(() => {
                         <Input
                             placeholder={item.placeholder}
                             register={register(item.name as "email" | "password")}
-                            typeInputForSignUp={item.type}
+                            typeInput={item.type}
                             testId={`test_login_${item.name}`}
                             errorTestId={`test_error_login_${item.name}`}
                             error={errors[item.name as "email" | "password"]}

@@ -2,9 +2,10 @@ import {ChangeHandler, FieldError} from "react-hook-form";
 import React from "react";
 import {IForTest} from "../../../models/models";
 
-export enum TypeInputAuth {
+export enum TypeInput {
     text = 'text',
     password = 'password',
+    number = "number",
 }
 
 interface IRegisterHook {
@@ -16,7 +17,7 @@ interface IRegisterHook {
 
 export interface IInputForAuth extends IForTest{
     placeholder?: string,
-    typeInputForSignUp?: TypeInputAuth,
+    typeInput?: TypeInput,
     error?: FieldError,
     register?: IRegisterHook,
 }
@@ -30,19 +31,19 @@ enum NameIFiendAuth {
 interface IFieldSign {
     name: NameIFiendAuth,
     placeholder: string,
-    type: TypeInputAuth,
+    type: TypeInput,
 }
 
 export const signInField: IFieldSign[] = [
     {
         name: NameIFiendAuth.email,
         placeholder: 'Введите ваш email',
-        type: TypeInputAuth.text,
+        type: TypeInput.text,
     },
     {
         name: NameIFiendAuth.password,
         placeholder: 'Введите пароль',
-        type: TypeInputAuth.password,
+        type: TypeInput.password,
     },
 ]
 
@@ -50,16 +51,16 @@ export const signUpField: IFieldSign[] = [
     {
         name: NameIFiendAuth.email,
         placeholder: 'Ваш email',
-        type: TypeInputAuth.text,
+        type: TypeInput.text,
     },
     {
         name: NameIFiendAuth.password,
         placeholder: 'Ваш пароль',
-        type: TypeInputAuth.password,
+        type: TypeInput.password,
     },
     {
         name: NameIFiendAuth.repeatPassword,
         placeholder: 'Ваш пароль',
-        type: TypeInputAuth.password,
+        type: TypeInput.password,
     },
 ]

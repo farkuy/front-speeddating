@@ -1,4 +1,4 @@
-import {TypeInputAuth} from "../Auth/components/model";
+import {TypeInput} from "../Auth/components/model";
 
 enum NameIFillingProfile {
     sex = 'sex',
@@ -9,28 +9,28 @@ enum NameIFillingProfile {
 interface IFillingProfile {
     name: NameIFillingProfile,
     placeholder: string,
-    type: TypeInputAuth,
+    type: TypeInput,
 }
 
 export const fillingProfile: IFillingProfile[] = [
     {
         name: NameIFillingProfile.sex,
         placeholder: "Введите предпочитаемый пол",
-        type: TypeInputAuth.text,
+        type: TypeInput.text,
     },
     {
         name: NameIFillingProfile.age,
         placeholder: "Введите свой возраст",
-        type: TypeInputAuth.text,
+        type: TypeInput.number,
     },
     {
         name: NameIFillingProfile.hobbies,
         placeholder: "Введите свои хобби через запятую",
-        type: TypeInputAuth.text,
+        type: TypeInput.text,
     },
     {
         name: NameIFillingProfile.about_yourself,
         placeholder: "Расскажите немного о себе",
-        type: TypeInputAuth.text,
+        type: TypeInput.text,
     },
 ];
