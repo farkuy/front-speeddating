@@ -41,7 +41,7 @@ export const SignUp = observer(() => {
                         <Input
                             placeholder={item.placeholder}
                             register={register(item.name)}
-                            typeInput={item.type}
+                            type={item.type}
                             testId={`test_login_${item.name}`}
                             errorTestId={`test_error_login_${item.name}`}
                             error={errors[item.name]}

@@ -21,12 +21,12 @@ export const FillingProfile = () => {
         defaultValues: {
             sex: '',
             age: 18,
-            hobbies: '',
             about_yourself: '',
         }
     });
 
     const fillingProfileSubmit: SubmitHandler<FormSchemaFillingProfileSchema> = async (data) => {
+        alert("Все готово")
     }
 
     return (
@@ -40,7 +40,7 @@ export const FillingProfile = () => {
                             <Input
                                 placeholder={item.placeholder}
                                 register={register(item.name)}
-                                typeInput={item.type}
+                                type={item.type}
                                 testId={`test_login_${item.name}`}
                                 errorTestId={`test_error_login_${item.name}`}
                                 error={errors[item.name]}
@@ -49,7 +49,7 @@ export const FillingProfile = () => {
                         )
                     })
                 }
-                <button>Войти</button>
+                <button>Создать профиль</button>
             </form>
         </div>
     );

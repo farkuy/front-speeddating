@@ -3,7 +3,6 @@ import {TypeInput} from "../Auth/components/model";
 enum NameIFillingProfile {
     sex = 'sex',
     age = 'age',
-    hobbies = 'hobbies',
     about_yourself = 'about_yourself',
 }
 interface IFillingProfile {
@@ -22,11 +21,6 @@ export const fillingProfile: IFillingProfile[] = [
         name: NameIFillingProfile.age,
         placeholder: "Введите свой возраст",
         type: TypeInput.number,
-    },
-    {
-        name: NameIFillingProfile.hobbies,
-        placeholder: "Введите свои хобби через запятую",
-        type: TypeInput.text,
     },
     {
         name: NameIFillingProfile.about_yourself,
