@@ -1,7 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import {App} from "../App";
-import Auth from "./pages/Auth/Auth";
-import {RegistrationProfileForm} from "./pages/RegistrationProfileForm/RegistrationProfileForm";
+import AuthPage from "./pages/Auth/AuthPage";
+import {FillingProfilePage} from "./pages/FillingProfile/FillingProfilePage";
 
 
 export const router = createBrowserRouter([
@@ -11,11 +11,11 @@ export const router = createBrowserRouter([
     },
     {
         path: "/auth",
-        element: <Auth/>,
+        element: <AuthPage/>,
     },
     {
-        path: "/reg_profile",
-        element: <RegistrationProfileForm/>,
+        path: "/filling_profile",
+        element: <FillingProfilePage/>,
     },
     {
         path: "*",

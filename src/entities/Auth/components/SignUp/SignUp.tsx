@@ -6,10 +6,12 @@ import {signUpField} from "../model";
 import {Input} from "../../../../globalComponents/Input/Input";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../../../index";
+import {useNavigate} from "react-router-dom";
 
 export const SignUp = observer(() => {
 
     const { user } = useContext(Context)
+    const history = useNavigate();
 
     const {
         register,
@@ -25,7 +27,8 @@ export const SignUp = observer(() => {
     });
 
     const registerSubmit: SubmitHandler<FormSchemaSigUp> = async (data) => {
-        await user.registration(data.email, data.password)
+        await user.registration(data.email, data.password);
+        history("/filling_profile")
     }
 
     return (

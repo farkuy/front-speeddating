@@ -22,6 +22,6 @@ export interface IUser {
         description: string,
     } [],
     user_profile_id: number,
-    user_profile: IUserProfile,
+    user_profile?: IUserProfile,
     user_preferred_id: number,
 }

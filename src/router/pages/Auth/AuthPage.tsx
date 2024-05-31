@@ -2,7 +2,7 @@ import React from 'react';
 import {NavBar} from "../../../globalComponents/NavBar/NavBar";
 import {AuthModal} from "../../../entities/Auth/AuthModal";
 
-const Auth = () => {
+const AuthPage = () => {
     return (
         <>
             <NavBar/>
@@ -13,5 +13,5 @@ const Auth = () => {
 
     );
 };
-export default Auth;
+export default AuthPage;
 

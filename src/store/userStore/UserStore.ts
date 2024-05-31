@@ -16,6 +16,7 @@ export default class UserStore {
             const response = await login(email, password);
             this.setIsAuth(true)
             this.setUser(response)
+            await this.getUserProfile()
             console.log(response)
         } catch (error) {
             console.log(error)
@@ -51,7 +52,7 @@ export default class UserStore {
         try {
             if (this._user?.user_profile_id) {
                 const response = await getUserProfile(this._user?.user_profile_id);
-                console.log(121, response)
+                this._user.user_profile = response;
             } else {
                 throw new Error("Профиль не найден")
             }

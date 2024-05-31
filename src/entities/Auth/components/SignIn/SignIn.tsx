@@ -6,10 +6,12 @@ import {signInField} from "../model";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../../../index";
 import {Input} from "../../../../globalComponents/Input/Input";
+import {useNavigate} from "react-router-dom";
 
 export const SignIn = observer(() => {
 
     const { user } = useContext(Context)
+    const history = useNavigate();
 
     const {
         register,
@@ -24,7 +26,12 @@ export const SignIn = observer(() => {
     });
 
     const registerSubmit: SubmitHandler<FormSchemaSigIn> = async (data) => {
-        await user.login(data.email, data.password)
+        await user.login(data.email, data.password);
+        console.log(user.user, user.user?.user_profile)
+        if (!user.user?.user_profile) {
+            console.log(user.user, user.user?.user_profile)
+            history("/filling_profile")
+        }
     }
 
     return (
