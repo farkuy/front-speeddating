@@ -13,11 +13,6 @@ interface IFillingProfile {
 
 export const fillingProfile: IFillingProfile[] = [
     {
-        name: NameIFillingProfile.sex,
-        placeholder: "Введите предпочитаемый пол",
-        type: TypeInput.text,
-    },
-    {
         name: NameIFillingProfile.age,
         placeholder: "Введите свой возраст",
         type: TypeInput.number,

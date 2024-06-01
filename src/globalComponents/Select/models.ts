@@ -1,8 +1,8 @@
 export interface IOption {
     title: string | number;
-    value: number;
+    value: string | number;
 }
-export interface ISelectProps {
+export interface SelectProps {
     selected: IOption;
     options: IOption[];
     placeholder?: string;
