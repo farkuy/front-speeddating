@@ -3,7 +3,6 @@ import {IOption} from "../../globalComponents/Select/models";
 import {ISex} from "../../store/userStore/schema";
 
 enum NameIFillingProfile {
-    sex = 'sex',
     age = 'age',
     about_yourself = 'about_yourself',
 }

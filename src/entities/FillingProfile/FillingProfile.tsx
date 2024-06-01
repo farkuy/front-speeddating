@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {fillingProfile, sexCount} from "./model";
 import {Input} from "../../globalComponents/Input/Input";
 import {Select} from "../../globalComponents/Select/Select";
@@ -7,7 +7,7 @@ import {useFillingProfile} from "./hooks/useFillingProfile";
 
 export const FillingProfile = () => {
 
-    const { selectedSex, handleSexChange} = useSelectSex();
+    const { selectedSex, handleSexChange } = useSelectSex();
 
     const {
         register,
@@ -15,6 +15,11 @@ export const FillingProfile = () => {
         handleSubmit,
         fillingProfileSubmit
     } = useFillingProfile({selectedSex})
+
+
+    useEffect(() => {
+        console.log(register("age"))
+    }, [register("age")])
 
     return (
         <form

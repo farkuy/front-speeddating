@@ -1,5 +1,5 @@
-import React, {FC, useState} from 'react';
-import {IOption, SelectProps} from "./models";
+import React, {FC} from 'react';
+import {SelectProps} from "./models";
 import styles from "./style.module.css"
 import {Option, SelectButton} from "./index"
 import {AnimatePresence, motion} from "framer-motion";
@@ -8,12 +8,7 @@ import {useChangeSelect} from "./hooks/useChangeSelect";
 
 export const Select: FC<SelectProps> = ( props ) => {
 
-    const {
-        selected,
-        options,
-        placeholder,
-        onChange,
-    } = props;
+    const { selected, options, placeholder, onChange } = props;
 
     const {
         isOpen,
