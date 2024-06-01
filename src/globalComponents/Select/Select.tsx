@@ -4,25 +4,28 @@ import styles from "./style.module.css"
 import {Option, SelectButton} from "./index"
 import {AnimatePresence, motion} from "framer-motion";
 import {clsx} from "clsx";
+import {useChangeSelect} from "./hooks/useChangeSelect";
 
 export const Select: FC<SelectProps> = ( props ) => {
 
-    const { selected, options, placeholder, onChange, onClose } = props;
+    const {
+        selected,
+        options,
+        placeholder,
+        onChange,
+    } = props;
 
-    const [isOpen, setIsOpen] = useState(false);
-    const handleOptionClick = (value: IOption["value"]) => {
-        setIsOpen(false);
-        onChange?.(value);
-    };
-    const handlePlaceHolderClick = () => {
-        setIsOpen(!isOpen);
-    };
+    const {
+        isOpen,
+        openOptions,
+        selectOption
+    } = useChangeSelect({onChange})
 
     return (
         <div className={styles.container_select}>
             <SelectButton
                 placeholder={placeholder}
-                handlePlaceHolderClick={handlePlaceHolderClick}
+                handlePlaceHolderClick={openOptions}
                 isOpen={isOpen}
                 selected={selected}
             />
@@ -43,7 +46,7 @@ export const Select: FC<SelectProps> = ( props ) => {
                                     key={option.value}
                                     title={option.title}
                                     value={option.value}
-                                    handleOptionClick={handleOptionClick}
+                                    handleOptionClick={selectOption}
                                 />
                             ))}
                         </ul>
