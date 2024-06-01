@@ -7,16 +7,16 @@ import {clsx} from "clsx";
 
 export const Select: FC<SelectProps> = ( props ) => {
 
+    const { selected, options, placeholder, onChange, onClose } = props;
+
     const [isOpen, setIsOpen] = useState(false);
     const handleOptionClick = (value: IOption["value"]) => {
         setIsOpen(false);
         onChange?.(value);
     };
     const handlePlaceHolderClick = () => {
-        setIsOpen((prev) => !prev);
+        setIsOpen(!isOpen);
     };
-
-    const { selected, options, placeholder, onChange, onClose } = props;
 
     return (
         <div className={styles.container_select}>
@@ -24,6 +24,7 @@ export const Select: FC<SelectProps> = ( props ) => {
                 placeholder={placeholder}
                 handlePlaceHolderClick={handlePlaceHolderClick}
                 isOpen={isOpen}
+                selected={selected}
             />
             <AnimatePresence>
                 { isOpen && (
@@ -42,6 +43,7 @@ export const Select: FC<SelectProps> = ( props ) => {
                                     key={option.value}
                                     title={option.title}
                                     value={option.value}
+                                    handleOptionClick={handleOptionClick}
                                 />
                             ))}
                         </ul>

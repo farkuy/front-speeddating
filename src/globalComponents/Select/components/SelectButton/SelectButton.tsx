@@ -1,16 +1,18 @@
 import React, {FC, useMemo} from 'react';
 import styles from "./style.module.css";
 import {SlArrowDown, SlArrowUp} from "react-icons/sl";
+import {IOption} from "../../models";
 
 interface SelectButtonProps {
     placeholder?: string,
     handlePlaceHolderClick: () => void;
-    isOpen: boolean
+    isOpen: boolean,
+    selected: IOption,
 }
 
 export const SelectButton:FC<SelectButtonProps> = ( props ) => {
 
-    const { placeholder, handlePlaceHolderClick, isOpen} = props;
+    const { placeholder, handlePlaceHolderClick, isOpen, selected} = props;
 
     const icon = useMemo(() => {
         if (isOpen) {
@@ -25,7 +27,7 @@ export const SelectButton:FC<SelectButtonProps> = ( props ) => {
             onClick={handlePlaceHolderClick}
         >
             <div>
-                { placeholder }
+                { selected.title || placeholder }
             </div>
             <div>
                 { icon }

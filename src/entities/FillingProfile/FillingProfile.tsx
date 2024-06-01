@@ -1,42 +1,20 @@
-import React, {useContext} from 'react';
-import {fillingProfile} from "./model";
+import React from 'react';
+import {fillingProfile, sexCount} from "./model";
 import {Input} from "../../globalComponents/Input/Input";
-import {Context} from "../../index";
-import {useNavigate} from "react-router-dom";
-import {SubmitHandler, useForm} from "react-hook-form";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {fillingProfileSchema, FormSchemaFillingProfileSchema} from "./schema";
 import {Select} from "../../globalComponents/Select/Select";
-import {IOption} from "../../globalComponents/Select/models";
-import {ISex} from "../../store/userStore/schema";
+import {useSelectSex} from "./hooks/useSelectSex";
+import {useFillingProfile} from "./hooks/useFillingProfile";
 
 export const FillingProfile = () => {
 
-    const { user } = useContext(Context)
-    const history = useNavigate();
+    const { selectedSex, handleSexChange} = useSelectSex();
 
     const {
         register,
+        errors,
         handleSubmit,
-        formState: { errors },}
-        = useForm<FormSchemaFillingProfileSchema>({
-        resolver: zodResolver(fillingProfileSchema),
-        defaultValues: {
-            sex: '',
-            age: 18,
-            about_yourself: '',
-        }
-    });
-
-    const fillingProfileSubmit: SubmitHandler<FormSchemaFillingProfileSchema> = async (data) => {
-        alert("Все готово")
-    }
-
-    const itemsCount: IOption[] = [
-        { title: ISex.MALE, value: ISex.MALE },
-        { title: ISex.FEMALE, value: ISex.FEMALE },
-    ];
-
+        fillingProfileSubmit
+    } = useFillingProfile({selectedSex})
 
     return (
         <div>
@@ -44,9 +22,10 @@ export const FillingProfile = () => {
                 onSubmit={handleSubmit(fillingProfileSubmit)}
             >
                 <Select
-                    selected={itemsCount[0]}
-                    options={itemsCount}
+                    selected={selectedSex}
+                    options={sexCount}
                     placeholder={"Ваш пол"}
+                    onChange={handleSexChange}
                 />
                 {
                     fillingProfile.map((item, index) => {
@@ -55,8 +34,8 @@ export const FillingProfile = () => {
                                 placeholder={item.placeholder}
                                 register={register(item.name)}
                                 type={item.type}
-                                testId={`test_login_${item.name}`}
-                                errorTestId={`test_error_login_${item.name}`}
+                                testId={`test_filling_profile_${item.name}`}
+                                errorTestId={`test_error_filling_profile_${item.name}`}
                                 error={errors[item.name]}
                                 key={item.name}
                             />

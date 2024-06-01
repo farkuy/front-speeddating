@@ -1,4 +1,6 @@
 import {TypeInput} from "../Auth/components/model";
+import {IOption} from "../../globalComponents/Select/models";
+import {ISex} from "../../store/userStore/schema";
 
 enum NameIFillingProfile {
     sex = 'sex',
@@ -22,4 +24,9 @@ export const fillingProfile: IFillingProfile[] = [
         placeholder: "Расскажите немного о себе",
         type: TypeInput.text,
     },
+];
+
+export const sexCount: IOption[] = [
+    { title: ISex.MALE, value: ISex.MALE },
+    { title: ISex.FEMALE, value: ISex.FEMALE },
 ];
