@@ -1,6 +1,6 @@
 import {$authHost, $host} from "./index";
 import {jwtDecode} from "jwt-decode";
-import {IUser} from "../store/userStore/schema";
+import {IUser, IUserProfile} from "../store/userStore/schema";
 
 export const login = async (email: string, password: string) => {
     const { data } = await $host.post('auth/login', {
@@ -29,6 +29,16 @@ export const checkAuth = async (jwt: string) => {
 }
 
 export const getUserProfile = async (idUserProfile: number) => {
-    const { data } = await $authHost.get(`http://localhost:5000/user-profile/21`);
-    return data
+    const { data } = await $host.get(`user-profile/${idUserProfile}`);
+    console.log(data)
+    return data;
+}
+
+export const setUserProfile = async (userProfile: IUserProfile, idUserProfile: number) => {
+    console.log(32, userProfile, idUserProfile)
+    const { data } = await $host.put(`user-profile/${idUserProfile}`, {
+        userProfile
+    });
+    console.log(23, data)
+    return data;
 }

@@ -16,11 +16,6 @@ export const FillingProfile = () => {
         fillingProfileSubmit
     } = useFillingProfile({selectedSex})
 
-
-    useEffect(() => {
-        console.log(register("age"))
-    }, [register("age")])
-
     return (
         <form
             onSubmit={handleSubmit(fillingProfileSubmit)}

@@ -9,6 +9,7 @@ export const useCheckAuth = async () => {
         const token = localStorage.getItem("token");
         if (token && !isAuthChecked) {
             user.checkAuth(token);
+            user.getUserProfile();
             setIsAuthChecked(true);
         }
     }, [user]);

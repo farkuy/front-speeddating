@@ -1,6 +1,6 @@
 import {makeAutoObservable} from "mobx"
-import {checkAuth, getUserProfile, login, registration} from "../../api/userApi";
-import {IUser} from "./schema";
+import {checkAuth, getUserProfile, login, registration, setUserProfile} from "../../api/userApi";
+import {IUser, IUserProfile} from "./schema";
 
 export default class UserStore {
     private _isAuth: boolean;
@@ -39,9 +39,11 @@ export default class UserStore {
     async checkAuth(jwt: string) {
         try {
             const response = await checkAuth(jwt);
-            console.log(response)
             this.setIsAuth(true)
             this.setUser(response)
+            if (this._user?.user_profile_id) {
+                this._user.user_profile = await getUserProfile(this._user?.user_profile_id);
+            }
         } catch (error) {
             console.log(error);
             alert('Чет не так')
@@ -51,14 +53,25 @@ export default class UserStore {
     async getUserProfile() {
         try {
             if (this._user?.user_profile_id) {
+                console.log(this._user?.user_profile_id)
                 const response = await getUserProfile(this._user?.user_profile_id);
                 this._user.user_profile = response;
-            } else {
-                throw new Error("Профиль не найден")
             }
         } catch (error) {
             console.log(error);
             alert('Чет не так')
+        }
+    }
+
+    async setUserProfile(userProfile: IUserProfile) {
+        try {
+            if (this._user?.user_profile_id) {
+                await setUserProfile(userProfile, this._user?.user_profile_id);
+                this._user.user_profile = userProfile;
+            }
+        } catch (error) {
+            console.log(error);
+            alert('Чет не так');
         }
     }
 
