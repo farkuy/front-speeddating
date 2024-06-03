@@ -30,12 +30,10 @@ export const checkAuth = async (jwt: string) => {
 
 export const getUserProfile = async (idUserProfile: number) => {
     const { data } = await $host.get(`user-profile/${idUserProfile}`);
-    console.log(data)
     return data;
 }
 
 export const setUserProfile = async (userProfile: IUserProfile, idUserProfile: number) => {
-    console.log(32, userProfile, idUserProfile)
     const { data } = await $host.put(`user-profile/${idUserProfile}`, {
         userProfile
     });

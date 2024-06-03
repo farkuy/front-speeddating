@@ -4,10 +4,10 @@ export enum ISex {
 }
 
 export interface IUserProfile {
-    sex?: ISex;
-    age?: number;
-    hobbies?: string [];
-    about_yourself?: string;
+    sex: ISex;
+    age: number;
+    hobbies: string [];
+    about_yourself: string;
 }
 
 export interface IUser {
