@@ -3,6 +3,8 @@ import {observer} from "mobx-react-lite";
 import {Context} from "./index";
 import {useCheckAuth} from "./hooks/useCheckAuth";
 import {NavBar} from "./globalComponents/NavBar/NavBar";
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./router/AppRouter";
 
 export const App = observer(() => {
 
@@ -10,13 +12,10 @@ export const App = observer(() => {
     const checkAuth = useCheckAuth();
 
     return (
-    <div className="App">
-        <NavBar/>
-        <div>
-            {user.user && <div>{user.user.email}</div>}
-            page
-        </div>
-    </div>
+        <BrowserRouter>
+            <NavBar />
+            <AppRouter />
+        </BrowserRouter>
   );
 })
 

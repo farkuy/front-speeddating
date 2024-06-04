@@ -4,6 +4,7 @@ import {RouterProvider} from "react-router-dom";
 import "./index.module.css"
 import UserStore from "./store/userStore/UserStore";
 import {router} from "./router/roter";
+import {App} from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,7 +23,7 @@ root.render(
       <Context.Provider value={{
           user
       }}>
-          <RouterProvider router={router}/>
+          <App/>
       </Context.Provider>
   </React.StrictMode>
 );
